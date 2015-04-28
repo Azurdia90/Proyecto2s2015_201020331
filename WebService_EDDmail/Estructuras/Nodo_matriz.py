@@ -1,4 +1,5 @@
 __author__ = 'Cristian'
+
 import Estructuras.Raiz_encabezados as raiz_usuarios
 
 class Nodo_matriz(object):
@@ -16,8 +17,6 @@ class Nodo_matriz(object):
         self.root_users = raiz_usuarios.Raiz_encabezado()
 
     #METODOS GET DE LA CLASE
-    def get_usuatio(self):
-        return self.usuario
     def get_x(self):
         return self.x
     def get_y(self):
@@ -30,11 +29,9 @@ class Nodo_matriz(object):
         return self.up
     def get_down(self):
         return self.down
-    def get_usuarios(self):
+    def get_root_users(self):
         return self.root_users
     #METODOS SET DE LA CLASE
-    def set_users(self,usuario):
-        self.root_users = usuario
     def set_x(self,x):
         self.x = x
     def set_y(self,y):
@@ -49,3 +46,4 @@ class Nodo_matriz(object):
         self.down = down
     def set_users(self,usuarios):
         self.root_users = usuarios
+pass

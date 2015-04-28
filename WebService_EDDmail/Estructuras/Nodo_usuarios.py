@@ -1,33 +1,42 @@
 __author__ = 'Cristian'
 
-import Estructuras.Raiz_encabezados as raiz_seccion
-class Nodo_usuarios(object):
-    #METODO CONTRUCTOR DE LA CLASE
-    def __init__(self):
-        self.usuario
-        self.root_seccion = raiz_seccion.Raiz_encabezado()
-        self.root_mail = None
+import Estructuras.Raiz_encabezados as raiz_usuarios
+
+class Nodo_matriz(object):
+    #CONSTRUCTOR DE LA CLASE
+    def __init__(self,usuario,password):
+        #DATOS DE REFERENCIA PARA LA INSERCCION
+        self.usuario = usuario
+        self.password = password
         self.next = None
         self.back = None
+        #RAICES DE LAS ESTRUCTURAS ADICIONALES
+        self.root_seccion = raiz_usuarios.Raiz_encabezado()
+        self.root_mail = None
     #METODOS GET DE LA CLASE
-    def get_usuario(self):
-        return self.usuario()
-    def get_root_seccion(self):
-        return self.root_seccion
-    def get_root_mail(self):
-        return self.root_mail
+    def get_user(self):
+        return self.usuario
+    def get_pass(self):
+        return self.password
     def get_next(self):
         return self.next
     def get_back(self):
         return self.back
+    def get_root_seccion(self):
+        return self.root_seccion
+    def get_root_mail(self):
+        return self.root_mail
     #METODOS SET DE LA CLASE
-    def set_usuario(self,usuario):
-        self.usuario = usuario
-    def set_root_seccion(self,raiz):
-        self.root_seccion = raiz
-    def set_root_mail(self,raiz):
-        self.root_mail=raiz
+    def set_user(self,usuario):
+        self.root_users = usuario
+    def set_pass(self,password):
+        self.password = password
     def set_next(self,next):
-        self.next=next
-    def set_back(self,back):
+        self.next = next
+    def set_back(self, back):
         self.back = back
+    def set_root_seccion(self,usuarios):
+        self.root_users = usuarios
+    def set_root_mail(self,usuarios):
+        self.root_users = usuarios
+pass

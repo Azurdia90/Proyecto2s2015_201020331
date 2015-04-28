@@ -1,5 +1,4 @@
 __author__ = 'Cristian'
-
 import Estructuras.Nodo_encabezado as nodo
 
 class Lista_encabezado(object):
