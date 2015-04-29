@@ -1,19 +1,28 @@
 __author__ = 'Cristian'
 
+#IMPORTANDO LO NECESARIO PARA LA MATRIZ
 import Estructuras.Lista_encabezados as listas
 import Estructuras.Nodo_matriz as nodo_matriz
 import Estructuras.Nodo_usuarios as nodo_usuario
+#IMPORTANDO LO NECESSARIO PARA LA LISTA DE USUARIOS
 import Estructuras.Lista_usuarios as lista_prof
+#IMPÓRTANDO LO NECESARIO  PARA LA LISTA DE CATEGORIAS
+import Estructuras.Lista_categorias as lista_cate
 
 class Matriz(object):
     #CONSTRUCTOR DE LA CLASE
     def __init__(self, raiz_x, raiz_y):
+        #INICIANDO LA MATRIZ
         self.root_x = raiz_x
         self.root_y = raiz_y
+        #INCIIANDO LAS LISTAS CABECERAS
         self.list_x = listas.Lista_encabezado(self.root_x)
         self.list_y = listas.Lista_encabezado(self.root_y)
-        self.lista_prof = lista_prof.Lista_usuarios()
         self.iniciar_matriz()
+        #INICIANDO LA LISTA PARA LOS USUARIOS
+        self.lista_prof = lista_prof.Lista_usuarios()
+        #INICIANDO LA LISTA PARA LAS CATEGORIAS DE USARIOS
+        self.lista_categorias = lista_cate.Lista_categorias()
     def iniciar_matriz(self):
         self.list_y.crear_y()
     def es_vacia(self, raiz):
@@ -21,14 +30,16 @@ class Matriz(object):
             return False
         else:
             return True
+        return
     #METODO QUE PERMITIRA INSERTAR UN NUEVO USUARIO EN LA MATRIZ, DE MANERA QUE ESTE USUARIO
-    #CONTENDRA OTRAS ESTRUCTURAS EN SU INSERIOR, SI NO EXISTE EL ENCABEZADO EN EJE X SE CREA
+    # CONTENDRA OTRAS ESTRUCTURAS EN SU INSERIOR, SI NO EXISTE EL ENCABEZADO EN EJE X SE CREA
     def insertar_usuario_matriz(self,cabecera_x,cabecera_y,usuario, password):
-        #SE CREA UN  NODO DEL TIPO MATRIZ QUE SERA EL QUE CONTENGA TODA LA INFORMACION DE ESA
-        #SECCION DE LA MATRIZ, CABECERAS, ESTRUCTURAS
-        #SE CREA UN NODO DEL TIPO USUARIO QUE CONTENDRA LA INOFRMACION DEL USUARIO Y DENTRO SUS ESTRUCTURAS
+        '''SE CREA UN  NODO DEL TIPO MATRIZ QUE SERA EL QUE CONTENGA TODA LA INFORMACION DE ESA
+        ***SECCION DE LA MATRIZ, CABECERAS, ESTRUCTURAS
+        ***SE CREA UN NODO DEL TIPO USUARIO QUE CONTENDRA LA INOFRMACION DEL USUARIO Y DENTRO SUS ESTRUCTURAS'''
         nuevo_nodo = nodo_matriz.Nodo_Matriz(cabecera_x, cabecera_y)
         nuevo_usuario = nodo_usuario.Nodo_matriz(usuario,password)
+        self.lista_categorias.insertar(nuevo_usuario.get_root_seccion(),'General')
         encabezado_x = self.list_x.buscar(cabecera_x)
         encabezado_y = self.list_y.buscar(cabecera_y)
         if encabezado_x != None:
@@ -119,15 +130,32 @@ class Matriz(object):
     #MANEJO DE LA INSERCCION EN PROFUNDIDAD DE LA ESTRUCTURA
     def insertar_profundidad(self,nodo_atual, nuevo_usuario):
         self.lista_prof.insertar(nodo_atual.get_root_users(), nuevo_usuario)
-
-
-    def buscar_usuario_matriz(self,cabecera_x,cabecera_y,usuario):
-        encabezado_x = self.list_x.buscar(cabecera_x)
+    '''********************************METODOS PARA LA BUSQUEDA******************************************************'''
+    def buscar_nodo_matriz(self,cabecera_x,cabecera_y):
         encabezado_y = self.list_y.buscar(cabecera_y)
-        econtrado = None
+        encontrado = None
         aux = None
-        if encabezado_x != None and encabezado_y != None:
+        if encabezado_y.get_first() != None:
             aux = encabezado_y.get_first()
             while aux != None:
-                if aux.get_
+                if aux.get_x() != cabecera_x:
+                    aux = aux.get_next()
+                else:
+                    encontrado = aux
+                    break
+        return encontrado
+    def buscar_usuario_matriz(self,cabecera_x,cabecera_y,usuario):
+        encontrado = None
+        nodo_matriz = None
+        nodo_matriz = self.buscar_nodo_matriz(cabecera_x,cabecera_y)
+        encontrado = self.lista_usuarios.buscar_usuario(nodo_matriz.get_root_users(),usuario)
+        return encontrado
+    def buscar_categoria(self,cabecera_x,cabecera_y,usuario,categoria):
+        usuario_aux = None
+        encontrado = None
+        usuario_aux = self.buscar_usuario_matriz(cabecera_x,cabecera_y,usuario)
+        if usuario_aux != None:
+            encontrado = self.lista_categorias.buscar_categoria(usuario.get_root_seccion(),categoria)
+        return encontrado
+    '''***************************METODOS PARA LA INSERCCION DE NUEVAS CATEGORIAS************************************'''
 pass

@@ -12,7 +12,6 @@ class Nodo_matriz(object):
         self.back = None
         #RAICES DE LAS ESTRUCTURAS ADICIONALES
         self.root_seccion = raiz_usuarios.Raiz_encabezado()
-        self.root_mail = None
     #METODOS GET DE LA CLASE
     def get_user(self):
         return self.usuario
@@ -24,8 +23,6 @@ class Nodo_matriz(object):
         return self.back
     def get_root_seccion(self):
         return self.root_seccion
-    def get_root_mail(self):
-        return self.root_mail
     #METODOS SET DE LA CLASE
     def set_user(self,usuario):
         self.root_users = usuario
@@ -36,7 +33,5 @@ class Nodo_matriz(object):
     def set_back(self, back):
         self.back = back
     def set_root_seccion(self,usuarios):
-        self.root_users = usuarios
-    def set_root_mail(self,usuarios):
         self.root_users = usuarios
 pass

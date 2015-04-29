@@ -1,5 +1,6 @@
 import json
 from flask import Flask, request
+#IMPORTANDO LO NECESARIO PARA LA MATRIZ
 import Estructuras.Raiz_Matriz as raiz_matriz
 import Estructuras.Raiz_encabezados as raiz_encabezado
 import Estructuras.Matriz as matriz
