@@ -8,6 +8,9 @@ import Estructuras.Nodo_usuarios as nodo_usuario
 import Estructuras.Lista_usuarios as lista_prof
 #IMPÓRTANDO LO NECESARIO  PARA LA LISTA DE CATEGORIAS
 import Estructuras.Lista_categorias as lista_cate
+#IMPORTANDO LO NECESARIO PARA EL ARBOL DE LOS REMITENTES
+import Estructuras.ArbolABB_remitente as arbol
+#IMPORTANDO LO NECESARIO PARA LA LISTA DE CORREOS
 
 class Matriz(object):
     #CONSTRUCTOR DE LA CLASE
@@ -23,6 +26,8 @@ class Matriz(object):
         self.lista_prof = lista_prof.Lista_usuarios()
         #INICIANDO LA LISTA PARA LAS CATEGORIAS DE USARIOS
         self.lista_categorias = lista_cate.Lista_categorias()
+        #INICIANDO EL ARBOL DE REMITENTES DE CORREOS
+        self.arbol = arbol.ArbolABB()
     def iniciar_matriz(self):
         self.list_y.crear_y()
     def es_vacia(self, raiz):
@@ -31,8 +36,10 @@ class Matriz(object):
         else:
             return True
         return
-    #METODO QUE PERMITIRA INSERTAR UN NUEVO USUARIO EN LA MATRIZ, DE MANERA QUE ESTE USUARIO
-    # CONTENDRA OTRAS ESTRUCTURAS EN SU INSERIOR, SI NO EXISTE EL ENCABEZADO EN EJE X SE CREA
+    '''METODOS PARA LA INSERCCION DE NUEVOS USUARIOS EN LA MATRIZ, AQUI SE INSERTAN LAS NUEVAS CABECERAS EN X
+    SI NO EXISTIERAN, EN CASO QUE EL NODO DE LA MATRIZ EXISTIERA SE INSERTA LA LISTA DE PROFUNDIDAD DE USUARIOS
+    ESO SE MANEJA UNICAMENTE EN EL EJE X SE INSERTA CON SU LISTA DE CATEGORIA GENERAL POR DEFECTO LAS DEMAS
+    ESTRUCTURAS SE INSERTAN CONFORME LAS NECESIDADES EL USUARIO'''
     def insertar_usuario_matriz(self,cabecera_x,cabecera_y,usuario, password):
         '''SE CREA UN  NODO DEL TIPO MATRIZ QUE SERA EL QUE CONTENGA TODA LA INFORMACION DE ESA
         ***SECCION DE LA MATRIZ, CABECERAS, ESTRUCTURAS
@@ -144,18 +151,24 @@ class Matriz(object):
                     encontrado = aux
                     break
         return encontrado
-    def buscar_usuario_matriz(self,cabecera_x,cabecera_y,usuario):
+    def buscar_usuario_matriz(self,nodo_matriz,usuario):
         encontrado = None
-        nodo_matriz = None
-        nodo_matriz = self.buscar_nodo_matriz(cabecera_x,cabecera_y)
         encontrado = self.lista_usuarios.buscar_usuario(nodo_matriz.get_root_users(),usuario)
         return encontrado
-    def buscar_categoria(self,cabecera_x,cabecera_y,usuario,categoria):
-        usuario_aux = None
+    def buscar_categoria_usuario(self,usuario,categoria):
         encontrado = None
-        usuario_aux = self.buscar_usuario_matriz(cabecera_x,cabecera_y,usuario)
-        if usuario_aux != None:
-            encontrado = self.lista_categorias.buscar_categoria(usuario.get_root_seccion(),categoria)
+        encontrado = self.lista_categorias.buscar_categoria(usuario.get_root_seccion(),categoria)
         return encontrado
+    def buscar_remitente_usuario(self,categoria,remitente):
+        encontrado = None
+        encontrado = self.arbol.buscar(categoria.get_root_mail(),remitente)
+        return remitente
+    def buscar_correo_usuario(self,remitente,msj):
+        encontrado = None
+
     '''***************************METODOS PARA LA INSERCCION DE NUEVAS CATEGORIAS************************************'''
+    '''***************************METODOS PARA LA INSERCCION DE NUEVOS REMITENTES************************************'''
+    '''*****************************METODOS PARA LA INSERCCION DE NUEVOS USUARIOS************************************'''
+    '''*****************************METODOS PARA LA IMPRESION DE LAS ESTRUCTURAS*************************************'''
+
 pass

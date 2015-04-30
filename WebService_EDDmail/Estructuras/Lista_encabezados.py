@@ -79,4 +79,5 @@ class Lista_encabezado(object):
         else:
             grafica += 'lista_vacia[shape=box,label="Lista Vacia"];\n'
         grafica += '}'
+        return grafica
 pass

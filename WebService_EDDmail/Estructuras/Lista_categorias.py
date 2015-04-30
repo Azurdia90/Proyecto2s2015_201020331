@@ -1,5 +1,5 @@
 __author__ = 'Cristian'
-
+import Estructuras.Nodo_categorias as nodo
 class Lista_categorias(object):
 
     def es_vacia(self, root):
@@ -7,7 +7,8 @@ class Lista_categorias(object):
             return True
         else:
             return False
-    def insertar(self, root, nuevo):
+    def insertar(self, root, categoria):
+        nuevo = nodo.Nodo_categorias(categoria)
         if self.es_vacia(root) != True:
             if(root.get_first().get_seccion()>nuevo.get_seccion()):
                 #INSERTAR AL INICIO
@@ -54,4 +55,20 @@ class Lista_categorias(object):
                     encontrado = aux
                     break
         return encontrado
+    def lista_categoria(self,root):
+        grafica = None
+        grafica = 'digraph categorias { \n'
+        if self.es_vacia(root) != True:
+            aux = root.get_first()
+            while(aux != None):
+                grafica += 'nodo'+aux.get_seccion()+'[shape=box,label="'+aux.get_seccion()+'"];\n'
+                if(aux.get_next!=None):
+                    grafica += 'nodo'+aux.get_seccion()+'->nodo'+aux.get_next().get_seccion()+';\n'
+                if(aux.get_back!=None):
+                    grafica += 'nodo'+aux.get_seccion()+'->nodo'+aux.get_back().get_seccion()+';\n'
+                aux = aux.get_next()
+        else:
+            grafica += 'lista_vacia[shape=box,label="Lista Vacia"];\n'
+        grafica += '}'
+        return grafica
 pass
