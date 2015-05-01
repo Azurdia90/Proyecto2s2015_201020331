@@ -14,22 +14,16 @@ import Estructuras.ArbolABB_remitente as arbol
 
 class Matriz(object):
     #CONSTRUCTOR DE LA CLASE
-    def __init__(self, raiz_x, raiz_y):
-        #INICIANDO LA MATRIZ
-        self.root_x = raiz_x
-        self.root_y = raiz_y
+    def __init__(self):
         #INCIIANDO LAS LISTAS CABECERAS
-        self.list_x = listas.Lista_encabezado(self.root_x)
-        self.list_y = listas.Lista_encabezado(self.root_y)
-        self.iniciar_matriz()
+        self.list_x = listas.Lista_encabezado()
+        self.list_y = listas.Lista_encabezado()
         #INICIANDO LA LISTA PARA LOS USUARIOS
         self.lista_prof = lista_prof.Lista_usuarios()
         #INICIANDO LA LISTA PARA LAS CATEGORIAS DE USARIOS
         self.lista_categorias = lista_cate.Lista_categorias()
         #INICIANDO EL ARBOL DE REMITENTES DE CORREOS
         self.arbol = arbol.ArbolABB()
-    def iniciar_matriz(self):
-        self.list_y.crear_y()
     def es_vacia(self, raiz):
         if raiz.get_first() != None:
             return False

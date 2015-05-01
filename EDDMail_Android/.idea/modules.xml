@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EDDMail_Android.iml" filepath="$PROJECT_DIR$/EDDMail_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/json-20141113/json-20141113.iml" filepath="$PROJECT_DIR$/json-20141113/json-20141113.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okhttp-2.2.0/okhttp-2.2.0.iml" filepath="$PROJECT_DIR$/okhttp-2.2.0/okhttp-2.2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okio-1.2.0/okio-1.2.0.iml" filepath="$PROJECT_DIR$/okio-1.2.0/okio-1.2.0.iml" />
+    </modules>
+  </component>
+</project>
+

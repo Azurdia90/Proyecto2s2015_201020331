@@ -1,6 +1,6 @@
 __author__ = 'Cristian'
 
-import Estructuras.Raiz_encabezados as raiz_usuarios
+import Estructuras.Raiz_listas as raiz_usuarios
 
 class Nodo_matriz(object):
     #CONSTRUCTOR DE LA CLASE

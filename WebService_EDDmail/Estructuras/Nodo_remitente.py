@@ -1,6 +1,6 @@
 __author__ = 'Cristian'
 
-import Estructuras.Raiz_encabezados as raiz
+import Estructuras.Raiz_listas as raiz
 
 class Nodo_ArbolABB(object):
     def __init__(self, remitente,mensaje):

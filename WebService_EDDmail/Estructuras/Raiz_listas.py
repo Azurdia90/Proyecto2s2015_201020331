@@ -1,6 +1,6 @@
 __author__ = 'Cristian'
 
-class Raiz_encabezado(object):
+class Raiz_listas(object):
     #METODO CONSTRUCTOR DE LA CLASE
     def __init__(self):
         self.first = None
