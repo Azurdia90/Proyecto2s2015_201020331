@@ -1,13 +1,9 @@
 package com.azurdiacristian.eddmail_android;
 
-import android.util.Log;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,25 +27,28 @@ public class EDD_Get {
         return response;
     }//fin del metod consumir get
 
-    public String[] imprimir_dominios(){
-        String[] resultados;
+    public String imprimir_dominios(){
+        //String resultados;
         try{
-            URL url = new URL("192.168.1.11:5000/consultar_dominios");
+            URL url = new URL("http://192.168.1.11:5000/consultar_dominios");
             Response respuestas  = get(url);
-            JSONArray dominios = new JSONArray(respuestas.body().string());
-            int tamaño =  dominios.length();
-            resultados = new String[tamaño];
-            for(int x= 0; x<tamaño; x++){
-                JSONObject dominio = dominios.getJSONObject(x);
-                resultados[x] = dominio.get("dominio").toString();
+            if (respuestas != null){
+                return "CONEXION EXITOSA";
+            }else{
+                return "NO HAY CONEXION";
             }
-            Log.i("Prueba", resultados[0]);
-            return resultados;
+            //JSONArray dominios = new JSONArray(respuestas.body().string());
+            //int tamaño =  dominios.length();
+            //resultados = new String[tamaño];
+            //for(int x= 0; x<tamaño; x++){
+               // JSONObject dominio = dominios.getJSONObject(x);
+                //resultados[x] = dominio.get("dominio").toString();
+            //}
+
         }catch(Exception e){
-            return null;
+            return e.toString();
             //no se que hacer aca
         }
-        //return null;
-    }
+    }//fin del metodo imprimir_dominios
 
-}
+}//fin de la clase

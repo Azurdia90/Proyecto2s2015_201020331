@@ -7,14 +7,18 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class Actividad_principal extends ActionBarActivity {
+
     private Spinner sp_dominios;
     private Button b_login;
+    private TextView tV_nuevo_usuario;
     private ArrayAdapter<String> list_dominios;
     private EDD_Get mostrar;
     private String[] dominios;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +29,11 @@ public class Actividad_principal extends ActionBarActivity {
     public void iniciar_UI(){
         sp_dominios = (Spinner) findViewById(R.id.sp_dominios);
         b_login = (Button) findViewById(R.id.b_login);
-        //mostrar = new EDD_Get();
+        tV_nuevo_usuario = (TextView) findViewById(R.id.tV_nuevo_usuario);
+        mostrar = new EDD_Get();
+        tV_nuevo_usuario.setText(mostrar.imprimir_dominios());
+
+
         //dominios = mostrar.imprimir_dominios();
         //list_dominios = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,dominios);
         //sp_dominios.setAdapter(list_dominios);
