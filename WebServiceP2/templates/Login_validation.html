@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Inicio de Sesion</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="wrap">
+                {%if login  %}
+                    <div class="title">
+                        <h1>Bienvenido  {{correo}}</h1>
+                    </div>
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/registrase">Registrarse</a></li>
+                        <li><a href="/login">Iniciar Sesion</a></li>
+                    </ul>
+                {% else %}
+                    <div class="title">
+                        <h1>Fallo inicio de sesion</h1>
+                        <h3>Contrasena o correo incorrectos, verifiquelos y vuelva a intentarlo</h3>
+                        <a href="/login">Iniciar Sesion</a>
+                    </div>
+
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>

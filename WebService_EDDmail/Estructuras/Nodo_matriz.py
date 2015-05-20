@@ -1,6 +1,6 @@
 __author__ = 'Cristian'
 
-import Estructuras.Raiz_listas as raiz_usuarios
+import Estructuras.Raiz_listas as raiz_listas
 
 class Nodo_matriz(object):
     #CONSTRUCTOR DE LA CLASE
@@ -14,7 +14,7 @@ class Nodo_matriz(object):
         self.up = None
         self.down = None
         #RAICES DE LA ESTRUCTURA DE PROFUNDIDAD
-        self.root_users = raiz_usuarios.Raiz_encabezado()
+        self.root_users = raiz_listas.Raiz_listas()
 
     #METODOS GET DE LA CLASE
     def get_x(self):
@@ -42,8 +42,8 @@ class Nodo_matriz(object):
         self.back = back
     def set_up(self, up):
         self.up = up
-    def set_down (self,down):
+    def set_down(self,down):
         self.down = down
-    def set_users(self,usuarios):
+    def set_root_users(self,usuarios):
         self.root_users = usuarios
 pass

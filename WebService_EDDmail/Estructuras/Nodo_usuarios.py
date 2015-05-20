@@ -2,7 +2,7 @@ __author__ = 'Cristian'
 
 import Estructuras.Raiz_listas as raiz_usuarios
 
-class Nodo_matriz(object):
+class Nodo_usuario(object):
     #CONSTRUCTOR DE LA CLASE
     def __init__(self,usuario,password):
         #DATOS DE REFERENCIA PARA LA INSERCCION
@@ -11,7 +11,7 @@ class Nodo_matriz(object):
         self.next = None
         self.back = None
         #RAICES DE LAS ESTRUCTURAS ADICIONALES
-        self.root_seccion = raiz_usuarios.Raiz_encabezado()
+        self.root_seccion = raiz_usuarios.Raiz_listas()
     #METODOS GET DE LA CLASE
     def get_user(self):
         return self.usuario
@@ -33,5 +33,5 @@ class Nodo_matriz(object):
     def set_back(self, back):
         self.back = back
     def set_root_seccion(self,usuarios):
-        self.root_users = usuarios
+        self.root_seccion = usuarios
 pass

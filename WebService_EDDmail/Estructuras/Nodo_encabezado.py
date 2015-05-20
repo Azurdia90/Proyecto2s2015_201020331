@@ -11,6 +11,10 @@ class Nodo_encabezado(object):
     #METODOS GET DE LA CLASE
     def get_encabezado(self):
         return self.encabezado
+    def get_first(self):
+        return self.first
+    def get_last(self):
+        return self.last
     def get_next(self):
         return self.next
     def get_back(self):
@@ -18,6 +22,10 @@ class Nodo_encabezado(object):
     #METODOS SET DE LA CLASE
     def set_encabezado(self,encabezado):
         self.encabezado = encabezado
+    def set_first(self,first):
+        self.first = first
+    def set_last(self,last):
+        self.last = last
     def set_next(self, next):
         self.next = next
     def set_back(self, back):

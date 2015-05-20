@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">EDDMail_Android</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="boton_inicio">Iniciar Sesión</string>
-    <string name="label_inicio">Crear una cuenta?</string>
+    <string name="app_name">EDDMail_Android</string>
+    <!-- STRINGS DEL ACTIVITY PRINCIPAL -->
+    <string name="title_activity_crear_usuario">Crear_usuario</string>
+    <string name="b_login">Iniciar Sesión</string>
+    <string name="b_nuevo_usuario">Crear Usuario</string>
+    <!-- STRINGS DEL ACTIVITY DE CREAR USUARIOS -->
+    <string name="l_usuario">Usuario</string>
+    <string name="l_contraseña">Contraseña</string>
+    <string name="mensaje_opcion">O INGRESE DOMINIO PERSONALIZADO</string>
+    <string name="l_dominio">Dominio</string>
+    <string name="l_extension">Extension</string>
+    <string name="b_crear_usuario">ACEPTAR</string>
+    <!-- STRINGS DEL ACTIVITY DE INICIO -->
+    <string name="title_activity_inicio">Inicio</string>
+    <string name="l_inicio"></string>
+    <string name="b_crear_categoria">CREAR CATEGORIA</string>
+    <string name="b_redactar_correo">REDACTAR CORREO</string>
+    <!-- STRINGS DEL ACTIVITY DE CATEGORIAS -->
+    <string name="title_activity_agregar_categoria">Agregar_categoria</string>
+    <string name="l_categoria">INGRESE SU CATEGORIA</string>
+    <string name="b_categoria">ACEPTAR</string>
+    <string name="title_activity_crear_categoria">Nueva categoria</string>
 
 </resources>

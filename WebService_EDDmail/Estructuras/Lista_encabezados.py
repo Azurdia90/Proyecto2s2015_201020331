@@ -51,9 +51,9 @@ class Lista_encabezado(object):
         nuevo.set_back(self.root.get_last())
         self.root.get_last().set_next(nuevo)
         self.root.set_last(nuevo)
-    def buscar(self,root,indice):
+    def buscar(self,indice):
         aux = None
-        if self.es_vacia() != True:
+        if self.es_vacia() == False:
             aux = self.root.get_first()
             while(aux!=None):
                 if(aux.get_encabezado() != indice):
@@ -81,27 +81,65 @@ class Lista_encabezado(object):
         else:
             resultado.append({'dominio':'La lista esta vacia'})
         return resultado
+
+    def graficar_x(self):
+        grafica = ''
+        if self.es_vacia() == False:
+            aux = self.root.get_first()
+            while(aux != None):
+                grafica += '"x_'+aux.get_encabezado()+'"[shape=box,label="'+aux.get_encabezado()+'"];\n'
+                if(aux.get_first() != None):
+                    grafica += '"x_'+aux.get_encabezado()+'"->"u_'+aux.get_first().get_root_users().get_first().get_user()+'";\n'
+                    grafica += self.graficar_usuarios_x(aux.get_first())
+                if(aux.get_next()!=None):
+                    grafica += '"x_'+aux.get_encabezado()+'"->"x_'+aux.get_next().get_encabezado()+'"[constraint=false];\n'
+                aux = aux.get_next()
+        else:
+             grafica += 'x_0[shape=box,label="Lista Vacia"];\n'
+        grafica += '\n\n'
+        return grafica
+    def graficar_usuarios_x(self,raiz):
+        grafica_usuarios = ''
+        aux = raiz
+        while(aux!=None):
+            grafica_usuarios += '"u_'+aux.get_root_users().get_first().get_user()+'"[shape=box,label="'+aux.get_root_users().get_first().get_user()+'"];\n'
+            if aux.get_down() != None:
+                aux_2 = aux.get_down()
+                if aux_2.get_root_users().get_first() != None:
+                    grafica_usuarios += '"u_'+aux.get_root_users().get_first().get_user()+'"->"u_'+aux_2.get_root_users().get_first().get_user()+'";\n'
+            aux = aux.get_down();
+        return grafica_usuarios
     '''********************************METODOS ESPECIFICOS DEL ENCABEZADO DEL EJE Y*********************************'''
     #METODO PARA INICIAR EL EJE Y DE LA MATRIZ
     def crear_y(self):
-        for y in [97,122]:
+        for y in range(97,123):
             caracter = chr(y)
             self.insertar(caracter)
+
     #METODO DE GRAFICAR DEL EJE Y
     def graficar_y(self):
-        grafica = None
-        grafica = 'digraph Ejey { \n'
-        if self.es_vacia() != True:
+        grafica = ''
+        if self.es_vacia() == False:
             aux = self.root.get_first()
             while(aux != None):
-                grafica += 'nodo'+aux.get_encabezado()+'[shape=box,label="'+aux.get_encabezado()+'"];\n'
-                if(aux.get_next!=None):
-                    grafica += 'nodo'+aux.get_encabezado()+'->nodo'+aux.get_next().get_encabezado()+';\n'
-                if(aux.get_back!=None):
-                    grafica += 'nodo'+aux.get_encabezado()+'->nodo'+aux.get_back().get_encabezado()+';\n'
+                grafica += 'y_'+aux.get_encabezado()+'[shape=box,label="'+aux.get_encabezado()+'"];\n'
+                if aux.get_first() != None:
+                    grafica += '"y_'+aux.get_encabezado()+'"->"u_'+aux.get_first().get_root_users().get_first().get_user()+'"[constraint=false];\n'
+                    grafica += self.graficar_usuarios_y(aux.get_first())
+                if(aux.get_next()!=None):
+                    grafica += 'y_'+aux.get_encabezado()+'->y_'+aux.get_next().get_encabezado()+';\n'
                 aux = aux.get_next()
         else:
-            grafica += 'lista_vacia[shape=box,label="Lista Vacia"];\n'
-        grafica += '}'
+            grafica += 'y_0[shape=box,label="Lista Vacia"];\n'
+        grafica += '\n\n'
         return grafica
-pass
+    def graficar_usuarios_y(self,raiz):
+        grafica_usuarios = ''
+        aux = raiz
+        while(aux != None):
+            if aux.get_next() != None:
+                aux_2 = aux.get_next()
+                if aux_2.get_root_users().get_first() != None:
+                    grafica_usuarios += '"u_'+aux.get_root_users().get_first().get_user()+'"->"u_'+aux_2.get_root_users().get_first().get_user()+'"[constraint=false];\n'
+            aux = aux.get_next();
+        return grafica_usuarios

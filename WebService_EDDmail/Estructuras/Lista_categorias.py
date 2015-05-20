@@ -9,7 +9,7 @@ class Lista_categorias(object):
             return False
     def insertar(self, root, categoria):
         nuevo = nodo.Nodo_categorias(categoria)
-        if self.es_vacia(root) != True:
+        if self.es_vacia(root) == False:
             if(root.get_first().get_seccion()>nuevo.get_seccion()):
                 #INSERTAR AL INICIO
                 self.insertar_inicio(root,nuevo)
@@ -20,8 +20,8 @@ class Lista_categorias(object):
                 #INSERTAR EN UNA POSICION ESPECIFICA
                 self.insertar_centro(root,nuevo)
         else:
-            self.root.set_first(nuevo)
-            self.root.set_last(nuevo)
+            root.set_first(nuevo)
+            root.set_last(nuevo)
     #METODOS DE INSERCCION EN LISTA ENLAZADA
     def insertar_inicio(self,root, nuevo):
         nuevo.set_next(root.get_first())
@@ -31,7 +31,7 @@ class Lista_categorias(object):
     def insertar_centro(self,root,nuevo):
         aux = root.get_first()
         while(aux != None):
-            if(aux.get_seccion()> nuevo.get_seccion()):
+            if(aux.get_seccion()<nuevo.get_seccion()):
                 aux = aux.get_next()
             else:
                 nuevo.set_back(aux.get_back())
@@ -55,7 +55,16 @@ class Lista_categorias(object):
                     encontrado = aux
                     break
         return encontrado
-    def lista_categoria(self,root):
+    def json_categorias(self,root):
+        retorno = ''
+        if self.es_vacia(root) == False:
+            aux = root.get_first()
+            while aux != None:
+                retorno += aux.get_seccion() +'/'
+                aux = aux.get_next()
+        return retorno
+
+    def graficar_categorias(self,root):
         grafica = None
         grafica = 'digraph categorias { \n'
         if self.es_vacia(root) != True:
